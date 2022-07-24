@@ -1,0 +1,233 @@
+.navBar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  border: none;
+  border-bottom: 1px solid rgba(196, 196, 196, 0.2);
+}
+
+.navBar_border {
+  border-bottom: 1px solid #d1d2d6;
+}
+
+.navBar__title {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 30px 0 26px 104px;
+}
+
+.navBar__menu {
+  display: flex;
+  flex-direction: row;
+  gap: 42px;
+  justify-content: center;
+  padding: 0;
+  align-items: center;
+  margin: 0 104px 0 0;
+  list-style-type: none;
+}
+
+.navBar__item {
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.navBar__link {
+  text-decoration: none;
+  color: white;
+  padding: 0 9px 26px;
+  border-bottom: 3px solid white;
+}
+
+.navBar__link_color_black {
+  color: black;
+  font-weight: 500;
+  border-bottom: 3px solid black;
+}
+
+.navBar__link_border_none {
+  border-bottom: none;
+}
+
+.navBar__overlay {
+  position: fixed;
+  left: 0;
+  top: 65px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+
+.navBar__button {
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  width: max-content;
+  padding: 12px 56px;
+  border-radius: 100px;
+  line-height: 24px;
+}
+
+.navBar__close {
+  background-image: url("../../images/close.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  min-width: 24px;
+  border: none;
+  /* position: absolute;
+  right: 22px;
+  top: 22px; */
+  z-index: 1;
+  background-color: transparent;
+  background-size: 24px 24px;
+  margin: 22px 22px 18px 0;
+  display: none;
+}
+
+.navBar__hamburger {
+  background-image: url("../../images/hamburger.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  min-width: 24px;
+  border: none;
+  /* position: absolute;
+  right: 22px;
+  top: 22px; */
+  background-color: transparent;
+  background-size: 24px 24px;
+  margin: 22px 22px 18px 0;
+  display: none;
+}
+
+.navBar__hamburger_black {
+  background-image: url("../../images/hamburger-black.svg");
+}
+
+.navBar__hamburger:hover {
+  cursor: pointer;
+}
+
+.navBar__button:hover {
+  cursor: pointer;
+}
+
+.navBar__button_color_black {
+  display: flex;
+  color: black;
+  border: 1px solid #d1d2d6;
+  padding: 12px 18px;
+  gap: 19px;
+}
+
+@media screen and (max-width: 768px) {
+  .navBar__title {
+    margin: 22px 0 18px 16px;
+  }
+
+  .navBar__menu {
+    gap: 16px;
+    margin: 0 40px 0 0;
+  }
+
+  .navBar__item {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .navBar__link {
+    padding: 0 9px 20px;
+    border-bottom: 3px solid white;
+  }
+
+  .navBar__link_color_black {
+    border-bottom: 3px solid black;
+  }
+  .navBar__link_border_none {
+    border-bottom: none;
+  }
+
+  .navBar__button {
+    padding: 7px 48px;
+    border-radius: 100px;
+    line-height: 24px;
+  }
+  .navBar__button_color_black {
+    display: flex;
+    color: black;
+    border: 1px solid #d1d2d6;
+    padding: 12px 18px;
+    gap: 19px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .navBar_mobile {
+    background-color: #1a1b22;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .navBar__close {
+    display: block;
+  }
+  .navBar__menu {
+    display: none;
+    z-index: 2;
+  }
+  .navBar__overlay {
+    display: block;
+  }
+  .navBar__menu_mobile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: flex-start;
+    top: 65px;
+    right: 0;
+    left: 0;
+
+    background-color: #1a1b22;
+    gap: 40px;
+    padding: 24px 16px;
+    margin: 0;
+  }
+
+  .navBar__title_white {
+    color: white;
+  }
+
+  .navBar__close:hover {
+    cursor: pointer;
+  }
+  .navBar__link {
+    border: none;
+  }
+  .navBar__button {
+    width: 100%;
+    min-height: 56px;
+  }
+  .navBar__item {
+    width: 100%;
+  }
+  .navBar__hamburger {
+    display: block;
+  }
+  .navBar__link {
+    color: white;
+  }
+  .navBar__button {
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+}
