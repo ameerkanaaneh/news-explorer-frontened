@@ -1,0 +1,57 @@
+/* inter-regular - latin */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: 
+      /* IE6-IE8 */ url("./inter-400-regular.woff") format("woff");
+}
+/* inter-900 - latin */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: 
+      /* IE6-IE8 */ url("./inter-500.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: 
+        /* IE6-IE8 */ url("./roboto-400-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: 
+        /* IE6-IE8 */ url("./roboto-500.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  src: 
+        /* IE6-IE8 */ url("./roboto-900.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 400;
+  src: 
+        /* IE6-IE8 */ url("./roboto-slab-400-regular.woff")
+    format("woff");
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 700;
+  src: 
+        /* IE6-IE8 */ url("./roboto-slab-700.woff") format("woff");
+}

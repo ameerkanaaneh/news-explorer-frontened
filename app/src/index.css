@@ -1,0 +1,37 @@
+/* fonts and normalize */
+@import url("./vendor/normalize.css");
+@import url("./vendor/fonts/fonts.css");
+
+/* header styles */
+@import url("./components/Header/Header.css");
+@import url("./components/Navigation/Navigation.css");
+
+/* searchForm styles */
+@import url("./components/SearchForm/SearchForm.css");
+
+/* NesCardList styles */
+@import url("./components/NewsCardList/NewsCardList.css");
+
+/* NewsCard styles */
+@import url("./components/NewsCard/NewsCard.css");
+
+/* About styles */
+@import url("./components/About/About.css");
+
+/* Footer styles */
+@import url("./components/Footer/Footer.css");
+
+/* SavedNewsHeader styles */
+@import url("./components/SavedNewsHeader/SavedNewsHeader.css");
+
+/* CardsSection styles */
+@import url("./components/CardsSection/CardsSection.css");
+
+/* SavedNews styles */
+@import url("./components/SavedNews/SavedNews.css");
+
+/* PopupWithForm styles */
+@import url("./components/PopupWithForm/PopupWithForm.css");
+
+/* preloader styles */
+@import url("./components/Preloader/preloader.css");
