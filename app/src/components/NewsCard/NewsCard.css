@@ -19,6 +19,9 @@
   background-color: white;
   border-radius: 8px;
 }
+.card__button:active {
+  background-image: url("../../images/saved-blue.svg");
+}
 
 .card__button_delete {
   background-image: url("../../images/trash.svg");
@@ -50,7 +53,7 @@
 }
 
 .card__date {
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   font-size: 18px;
   line-height: 24px;
   color: #b6bcbf;
@@ -167,6 +170,7 @@
     font-size: 22px;
     line-height: 24px;
     height: 72px;
+    -webkit-line-clamp: 2;
   }
 
   .card__description {

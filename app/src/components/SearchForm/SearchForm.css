@@ -1,4 +1,4 @@
-.searchForm {
+.search-form {
   margin: 88px auto 80px;
   max-width: 608px;
   width: 100%;
@@ -8,7 +8,7 @@
   flex-direction: row;
 }
 
-.searchForm__input {
+.search-form__input {
   font-size: 16px;
   line-height: 22px;
   padding: 21px 24px;
@@ -19,16 +19,16 @@
   color: #b6bcbf;
 }
 
-.searchForm__input:focus {
+.search-form__input:focus {
   border: none;
   outline: none;
 }
 
-.searchForm__input::placeholder {
+.search-form__input::placeholder {
   color: #b6bcbf;
 }
 
-.searchForm__button {
+.search-form__button {
   color: white;
   background-color: #2f71e5;
   border: none;
@@ -40,18 +40,22 @@
   right: 0px;
 }
 
-.searchForm__button:hover {
+.search-form__button:hover {
   cursor: pointer;
   background-color: #347eff;
 }
 
+.search-form__button:active {
+  background-color: #2a65cc;
+}
+
 @media screen and (max-width: 768px) {
-  .searchForm {
+  .search-form {
     margin: 48px auto 48px;
     max-width: 448px;
   }
 
-  .searchForm__input {
+  .search-form__input {
     font-size: 16px;
     line-height: 22px;
     padding: 17px 21px;
@@ -59,7 +63,7 @@
     width: 100%;
   }
 
-  .searchForm__button {
+  .search-form__button {
     color: white;
     background-color: #2f71e5;
     border: none;
@@ -69,19 +73,19 @@
 }
 
 @media screen and (max-width: 500px) {
-  .searchForm {
+  .search-form {
     margin: 122px 16px 32px;
     width: auto;
     flex-direction: column;
     gap: 16px;
   }
-  .searchForm__input {
+  .search-form__input {
     padding: 17px 21px;
     max-width: none;
     width: auto;
   }
 
-  .searchForm__button {
+  .search-form__button {
     display: block;
     color: white;
     background-color: #2f71e5;

@@ -13,7 +13,7 @@ function SavedNewsHeader({ handelOpenClick, handleCloseClick, isOpened }) {
       >
         <ul
           className={
-            isOpened ? "navBar__menu navBar__menu_mobile" : "navBar__menu"
+            isOpened ? "navBar__menu navBar__menu_view_mobile" : "navBar__menu"
           }
         >
           <li className="navBar__item">
@@ -38,7 +38,7 @@ function SavedNewsHeader({ handelOpenClick, handleCloseClick, isOpened }) {
               type="button"
             >
               <span>Elise</span>
-              <img src={logoutImg} className="navBar__icon"></img>
+              <img src={logoutImg} className="navBar__icon" alt="icon"></img>
             </button>
           </li>
         </ul>

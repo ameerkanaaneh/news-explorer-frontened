@@ -23,7 +23,7 @@ function Main(props) {
   });
 
   const validEmailRegex = RegExp(
-    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i
   );
   const closeAllPopups = (e) => {
     e.preventDefault();
@@ -98,7 +98,7 @@ function Main(props) {
     setSignUpState(signUpBtnState);
   };
   return (
-    <div className="Main">
+    <main className="main">
       <Header
         handleOpenClick={props.handleOpenClick}
         handleCloseClick={props.handleCloseClick}
@@ -216,7 +216,7 @@ function Main(props) {
       />
       <About />
       <Footer />
-    </div>
+    </main>
   );
 }
 

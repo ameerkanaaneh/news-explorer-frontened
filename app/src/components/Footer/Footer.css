@@ -41,7 +41,19 @@
 }
 
 .footer__social {
-  max-width: 20px;
+  min-width: 20px;
+}
+
+.footer__social_type_github {
+  background-image: url("../../images/github.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.footer__social_type_facebook {
+  background-image: url("../../images/facebook.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .footer__practicum {
@@ -82,7 +94,7 @@
     flex-direction: column-reverse;
     gap: 38px;
   }
-  .footer_saved-news {
+  .footer_page_saved-news {
     margin: 20px 18px 22px;
   }
 

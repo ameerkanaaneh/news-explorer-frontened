@@ -18,7 +18,7 @@ function Header({
       >
         <ul
           className={
-            isOpened ? "navBar__menu navBar__menu_mobile" : "navBar__menu"
+            isOpened ? "navBar__menu navBar__menu_view_mobile" : "navBar__menu"
           }
         >
           <li className="navBar__item">

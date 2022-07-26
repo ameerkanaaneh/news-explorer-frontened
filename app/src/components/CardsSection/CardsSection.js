@@ -6,7 +6,7 @@ function CardsSection() {
     <div className="cardsSection">
       <h2 className="cardsSection__title">Search results</h2>
       <NewsCardList>
-        <li className="card">
+        <li className="news-card-list__card">
           <NewsCard
             date="November 4, 2020"
             title="Everyone Needs a Special 'Sit Spot' in Nature"

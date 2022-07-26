@@ -2,11 +2,13 @@ import React from "react";
 
 function Navigation(props) {
   return (
-    <div className={props.isOpened ? "navBar navBar_mobile" : "navBar "}>
+    <div className={props.isOpened ? "navBar navBar_view_mobile" : "navBar "}>
       {props.isOpened && <div className="navBar__overlay"></div>}
       <p
         className={
-          props.isOpened ? "navBar__title navBar__title_white" : "navBar__title"
+          props.isOpened
+            ? "navBar__title navBar__title_color_white"
+            : "navBar__title"
         }
       >
         NewsExplorer
@@ -17,7 +19,7 @@ function Navigation(props) {
           props.isOpened
             ? "navBar__close"
             : props.color
-            ? "navBar__hamburger navBar__hamburger_black"
+            ? "navBar__hamburger navBar__hamburger_color_black"
             : "navBar__hamburger"
         }
         onClick={

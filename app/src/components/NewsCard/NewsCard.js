@@ -16,12 +16,12 @@ function NewsCard({ date, title, description, type, keyword }) {
         </p>
       </div>
 
-      <img className="card__image" src={image} alt="image" />
+      <img className="card__image" src={image} alt="card" />
       <div className="card__content">
         <p className="card__date">{date}</p>
         <h3 className="card__title">{title}</h3>
         <p className="card__description">{description}</p>
-        <p className="card__type">{type}</p>
+        <p className="card__type">{type.toUpperCase()}</p>
       </div>
     </div>
   );

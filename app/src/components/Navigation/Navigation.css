@@ -107,7 +107,7 @@
   display: none;
 }
 
-.navBar__hamburger_black {
+.navBar__hamburger_color_black {
   background-image: url("../../images/hamburger-black.svg");
 }
 
@@ -169,7 +169,11 @@
 }
 
 @media screen and (max-width: 550px) {
-  .navBar_mobile {
+  .navBar__icon {
+    display: none;
+  }
+
+  .navBar_view_mobile {
     background-color: #1a1b22;
     position: absolute;
     top: 0;
@@ -186,7 +190,7 @@
   .navBar__overlay {
     display: block;
   }
-  .navBar__menu_mobile {
+  .navBar__menu_view_mobile {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -201,7 +205,7 @@
     margin: 0;
   }
 
-  .navBar__title_white {
+  .navBar__title_color_white {
     color: white;
   }
 
