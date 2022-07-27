@@ -1,0 +1,240 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  border: none;
+  border-bottom: 1px solid rgba(196, 196, 196, 0.2);
+}
+
+.nav-bar_border {
+  border-bottom: 1px solid #d1d2d6;
+}
+
+.nav-bar__title {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 30px 0 26px 104px;
+}
+
+.nav-bar__menu {
+  display: flex;
+  flex-direction: row;
+  gap: 42px;
+  justify-content: center;
+  padding: 0;
+  align-items: center;
+  margin: 0 104px 0 0;
+  list-style-type: none;
+}
+
+.nav-bar__item {
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.nav-bar__link {
+  text-decoration: none;
+  color: white;
+  padding: 0 9px 26px;
+  border-bottom: 3px solid white;
+}
+
+.nav-bar__link_color_black {
+  color: black;
+  font-weight: 500;
+  border-bottom: 3px solid black;
+}
+
+.nav-bar__link_border_none {
+  border-bottom: none;
+}
+
+.nav-bar__overlay {
+  position: fixed;
+  left: 0;
+  top: 65px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+
+.nav-bar__button {
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  width: max-content;
+  padding: 12px 56px;
+  border-radius: 100px;
+  line-height: 24px;
+}
+
+.nav-bar__close {
+  background-image: url("../../images/close.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  min-width: 24px;
+  border: none;
+  /* position: absolute;
+  right: 22px;
+  top: 22px; */
+  z-index: 1;
+  background-color: transparent;
+  background-size: 24px 24px;
+  margin: 22px 22px 18px 0;
+  display: none;
+}
+
+.nav-bar__hamburger {
+  background-image: url("../../images/hamburger.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  min-width: 24px;
+  border: none;
+  /* position: absolute;
+  right: 22px;
+  top: 22px; */
+  background-color: transparent;
+  background-size: 24px 24px;
+  margin: 22px 22px 18px 0;
+  display: none;
+}
+
+.nav-bar__hamburger_color_black {
+  background-image: url("../../images/hamburger-black.svg");
+}
+
+.nav-bar__hamburger:hover {
+  cursor: pointer;
+}
+
+.nav-bar__button:hover {
+  cursor: pointer;
+}
+
+.nav-bar__button_color_black {
+  display: flex;
+  color: black;
+  border: 1px solid #d1d2d6;
+  padding: 12px 18px;
+  gap: 19px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-bar__title {
+    margin: 22px 0 18px 40px;
+  }
+
+  .nav-bar__menu {
+    gap: 16px;
+    margin: 0 40px 0 0;
+  }
+
+  .nav-bar__item {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .nav-bar__link {
+    padding: 0 9px 20px;
+    border-bottom: 3px solid white;
+  }
+
+  .nav-bar__link_color_black {
+    border-bottom: 3px solid black;
+  }
+  .nav-bar__link_border_none {
+    border-bottom: none;
+  }
+
+  .nav-bar__button {
+    padding: 7px 48px;
+    border-radius: 100px;
+    line-height: 24px;
+  }
+  .nav-bar__button_color_black {
+    display: flex;
+    color: black;
+    border: 1px solid #d1d2d6;
+    padding: 12px 18px;
+    gap: 19px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .nav-bar__title {
+    margin-left: 16px;
+  }
+  /* .nav-bar__icon {
+    background-image: url("../../images/logout-white.svg");
+  } */
+
+  .nav-bar_view_mobile {
+    background-color: #1a1b22;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .nav-bar__close {
+    display: block;
+  }
+  .nav-bar__menu {
+    display: none;
+    z-index: 2;
+  }
+  .nav-bar__overlay {
+    display: block;
+  }
+  .nav-bar__menu_view_mobile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: flex-start;
+    top: 65px;
+    right: 0;
+    left: 0;
+
+    background-color: #1a1b22;
+    gap: 40px;
+    padding: 24px 16px;
+    margin: 0;
+  }
+
+  .nav-bar__title_color_white {
+    color: white;
+  }
+
+  .nav-bar__close:hover {
+    cursor: pointer;
+  }
+  .nav-bar__link {
+    border: none;
+  }
+  .nav-bar__button {
+    width: 100%;
+    min-height: 56px;
+  }
+  .nav-bar__item {
+    width: 100%;
+  }
+  .nav-bar__hamburger {
+    display: block;
+  }
+  .nav-bar__link {
+    color: white;
+  }
+  .nav-bar__button {
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+}

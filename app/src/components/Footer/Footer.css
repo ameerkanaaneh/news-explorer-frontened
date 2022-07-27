@@ -1,0 +1,124 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  margin: 32px 106px 26px 104px;
+  justify-content: space-between;
+}
+
+.footer__mark {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #b6bcbf;
+}
+
+.footer__link-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.footer__social-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.footer__group {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  gap: 28px;
+}
+
+.footer__link {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+  text-decoration: none;
+}
+
+.footer__social {
+  min-width: 20px;
+}
+
+.footer__social_type_github {
+  background-image: url("../../images/github.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.footer__social_type_facebook {
+  background-image: url("../../images/facebook.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.footer__practicum {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+  margin: 0;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    margin: 24px 40px 18px;
+  }
+
+  .footer__group {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    gap: 24px;
+  }
+  .footer__link-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  .footer__social-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer {
+    margin: 148px 18px 22px;
+    flex-direction: column-reverse;
+    gap: 38px;
+  }
+  .footer_page_saved-news {
+    margin: 20px 18px 22px;
+  }
+
+  .footer__group {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    justify-content: space-between;
+  }
+  .footer__link-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+  }
+
+  .footer__social-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: flex-start;
+  }
+  .footer__link {
+    font-family: "Roboto", sans-serif;
+  }
+}

@@ -1,0 +1,68 @@
+.cards-section {
+  padding: 80px 104px;
+  background-color: #f5f6f7;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cards-section__title {
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  line-height: 46px;
+  text-align: left;
+  font-weight: 400;
+  margin: 0 auto 64px;
+  max-width: 1232px;
+}
+
+.cards-section__button {
+  margin: 64px auto 0;
+  border: none;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 20px 98px;
+  border-radius: 80px;
+}
+
+.cards-section__button:hover {
+  cursor: pointer;
+  background-color: #e8e8e8;
+}
+
+@media screen and (max-width: 768px) {
+  .cards-section {
+    padding: 40px 40px;
+  }
+
+  .cards-section__title {
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 0;
+  }
+
+  .cards-section__button {
+    margin: 32px auto 0;
+
+    padding: 18px 74px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cards-section {
+    padding: 32px 16px 24px;
+  }
+
+  .cards-section__title {
+    margin-bottom: 58px;
+  }
+
+  .cards-section__button {
+    margin: 21px auto 0;
+    width: 100%;
+    padding: 16px 74px;
+  }
+}
