@@ -18,18 +18,20 @@ function Header({
       >
         <ul
           className={
-            isOpened ? "navBar__menu navBar__menu_view_mobile" : "navBar__menu"
+            isOpened
+              ? "nav-bar__menu nav-bar__menu_view_mobile"
+              : "nav-bar__menu"
           }
         >
-          <li className="navBar__item">
-            <NavLink className="navBar__link" to="/">
+          <li className="nav-bar__item">
+            <NavLink className="nav-bar__link" to="/">
               Home
             </NavLink>
           </li>
-          <li className="navBar__item">
+          <li className="nav-bar__item">
             <button
               onClick={handleLogInClick}
-              className="navBar__button"
+              className="nav-bar__button"
               type="button"
             >
               Sign in

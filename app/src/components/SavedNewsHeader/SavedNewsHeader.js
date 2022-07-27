@@ -1,6 +1,7 @@
 import Navigation from "../Navigation/Navigation";
 import { NavLink } from "react-router-dom";
 import logoutImg from "../../images/logout.svg";
+import logoutImgWhite from "../../images/logout-white.svg";
 
 function SavedNewsHeader({ handelOpenClick, handleCloseClick, isOpened }) {
   return (
@@ -13,32 +14,38 @@ function SavedNewsHeader({ handelOpenClick, handleCloseClick, isOpened }) {
       >
         <ul
           className={
-            isOpened ? "navBar__menu navBar__menu_view_mobile" : "navBar__menu"
+            isOpened
+              ? "nav-bar__menu nav-bar__menu_view_mobile"
+              : "nav-bar__menu"
           }
         >
-          <li className="navBar__item">
+          <li className="nav-bar__item">
             <NavLink
-              className="navBar__link navBar__link_color_black navBar__link_border_none"
+              className="nav-bar__link nav-bar__link_color_black nav-bar__link_border_none"
               to="/"
             >
               Home
             </NavLink>
           </li>
-          <li className="navBar__item navBar__item__color_black">
+          <li className="nav-bar__item nav-bar__item__color_black">
             <NavLink
-              className="navBar__link navBar__link_color_black"
+              className="nav-bar__link nav-bar__link_color_black"
               to="/saved-news"
             >
               Saved articles
             </NavLink>
           </li>
-          <li className="navBar__item ">
+          <li className="nav-bar__item ">
             <button
-              className="navBar__button navBar__button_color_black"
+              className="nav-bar__button nav-bar__button_color_black"
               type="button"
             >
               <span>Elise</span>
-              <img src={logoutImg} className="navBar__icon" alt="icon"></img>
+              <img
+                src={isOpened ? logoutImgWhite : logoutImg}
+                className="nav-bar__icon"
+                alt="icon"
+              ></img>
             </button>
           </li>
         </ul>

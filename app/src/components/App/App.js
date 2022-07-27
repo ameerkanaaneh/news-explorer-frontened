@@ -20,6 +20,7 @@ function App() {
         path="/"
         element={
           <Main
+            setIsOpened={setIsMobileNavbarOpen}
             handleOpenClick={openNavBar}
             handleCloseClick={closeNavBar}
             isOpened={isMobileNavbarOpen}

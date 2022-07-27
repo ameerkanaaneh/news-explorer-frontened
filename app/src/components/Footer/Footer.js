@@ -11,7 +11,12 @@ function Footer(props) {
           <Link to="/" className="footer__link">
             Home
           </Link>
-          <p className="footer__practicum">Practicum by Yandex</p>
+          <a
+            href="https://practicum.com/en-isr/?gclid=Cj0KCQjwxIOXBhCrARIsAL1QFCbJkE25fh4-LEoR0E2TQ4-iKZJDxxbeSkpQ_-3nTfiY6GXSeKAEFGUaAvzEEALw_wcB"
+            className=" footer__practicum"
+          >
+            Practicum by Yandex
+          </a>
         </div>
         <div className="footer__social-wrapper">
           <a className="footer__social" href="https://github.com/ameerkanaaneh">

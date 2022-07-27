@@ -19,9 +19,9 @@
   background-color: white;
   border-radius: 8px;
 }
-.card__button:active {
+/* .card__button:active {
   background-image: url("../../images/saved-blue.svg");
-}
+} */
 
 .card__button_delete {
   background-image: url("../../images/trash.svg");

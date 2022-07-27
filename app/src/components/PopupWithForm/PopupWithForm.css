@@ -47,15 +47,15 @@ input:-webkit-autofill:active {
 
 @media screen and (max-width: 500px) {
   .popup__close {
-    right: 0;
-    top: -30px;
+    right: 10px;
+    top: -35px;
     padding: 0;
     background-size: 24px 24px;
     min-width: 24px;
     min-height: 24px;
   }
   .popup__container {
-    padding: 16px 16px 228px;
+    padding: 16px 16px 188px;
     border-radius: 25px 25px 0 0;
   }
 }
@@ -183,4 +183,11 @@ input:-webkit-autofill:active {
   line-height: 15px;
   margin-top: 3px;
   margin-bottom: 30px;
+}
+
+@media screen and (max-width: 425px) {
+  .popup {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
 }

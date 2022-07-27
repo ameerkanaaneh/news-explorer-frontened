@@ -3,8 +3,8 @@ import NewsCard from "../NewsCard/NewsCard";
 
 function CardsSection() {
   return (
-    <div className="cardsSection">
-      <h2 className="cardsSection__title">Search results</h2>
+    <div className="cards-section">
+      <h2 className="cards-section__title">Search results</h2>
       <NewsCardList>
         <li className="news-card-list__card">
           <NewsCard
@@ -31,7 +31,7 @@ function CardsSection() {
           />
         </li>
       </NewsCardList>
-      <button className="cardsSection__button">Show more</button>
+      <button className="cards-section__button">Show more</button>
     </div>
   );
 }

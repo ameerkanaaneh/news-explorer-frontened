@@ -46,6 +46,7 @@ function Main(props) {
   const handleLogInClick = (e) => {
     e.preventDefault();
     setIsSignInformOpened(true);
+    props.setIsOpened(false);
   };
   const handleSignUpClick = (e) => {
     e.preventDefault();
@@ -98,125 +99,127 @@ function Main(props) {
     setSignUpState(signUpBtnState);
   };
   return (
-    <main className="main">
+    <div className="main">
       <Header
         handleOpenClick={props.handleOpenClick}
         handleCloseClick={props.handleCloseClick}
         isOpened={props.isOpened}
         handleLogInClick={handleLogInClick}
       />
-      <Preloader />
-      <CardsSection />
-      <PopupWithForm
-        handleAltBtnClick={handleAltBtnClick}
-        isOpened={isSignInFormOpened}
-        closeAllPopups={closeAllPopups}
-        title="Sign in"
-        altButton="Sign up"
-      >
-        <label htmlFor="email" className="popup__label">
-          Email
-        </label>
-        <input
-          required
-          className="popup__input"
-          id="email"
-          type="email"
-          placeholder="Enter email"
-          name="email"
-          onChange={validateInput}
-          value={data.email}
-        />
-        <span className="popup__error">{errors.email}</span>
-        <label htmlFor="password" className="popup__label">
-          Password
-        </label>
-        <input
-          required
-          className="popup__input"
-          id="password"
-          type="password"
-          placeholder="Enter password"
-          name="password"
-          value={data.password}
-          onChange={validateInput}
-        />
+      <main className="main_content">
+        <Preloader />
+        <CardsSection />
+        <PopupWithForm
+          handleAltBtnClick={handleAltBtnClick}
+          isOpened={isSignInFormOpened}
+          closeAllPopups={closeAllPopups}
+          title="Sign in"
+          altButton="Sign up"
+        >
+          <label htmlFor="email" className="popup__label">
+            Email
+          </label>
+          <input
+            required
+            className="popup__input"
+            id="email"
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            onChange={validateInput}
+            value={data.email}
+          />
+          <span className="popup__error">{errors.email}</span>
+          <label htmlFor="password" className="popup__label">
+            Password
+          </label>
+          <input
+            required
+            className="popup__input"
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            name="password"
+            value={data.password}
+            onChange={validateInput}
+          />
 
-        <span className="popup__error">{errors.password}</span>
+          <span className="popup__error">{errors.password}</span>
 
-        <input
-          className="popup__submit"
-          disabled={signInState}
-          type="button"
-          value="Sign in"
-        ></input>
-      </PopupWithForm>
-      <PopupWithForm
-        handleAltBtnClick={handleAltBtnClick}
-        isOpened={isSignUpFormOpened}
-        closeAllPopups={closeAllPopups}
-        title="Sign Up"
-        altButton="Sign in"
-      >
-        <label htmlFor="email" className="popup__label">
-          Email
-        </label>
-        <input
-          required
-          className="popup__input"
-          id="email"
-          type="email"
-          placeholder="Enter email"
-          name="email"
-          value={data.email}
-          onChange={validateInput}
+          <input
+            className="popup__submit"
+            disabled={signInState}
+            type="button"
+            value="Sign in"
+          ></input>
+        </PopupWithForm>
+        <PopupWithForm
+          handleAltBtnClick={handleAltBtnClick}
+          isOpened={isSignUpFormOpened}
+          closeAllPopups={closeAllPopups}
+          title="Sign Up"
+          altButton="Sign in"
+        >
+          <label htmlFor="email" className="popup__label">
+            Email
+          </label>
+          <input
+            required
+            className="popup__input"
+            id="email"
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={data.email}
+            onChange={validateInput}
+          />
+          <span className="popup__error">{errors.email}</span>
+          <label htmlFor="password" className="popup__label">
+            Password
+          </label>
+          <input
+            required
+            className="popup__input"
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            name="password"
+            value={data.password}
+            onChange={validateInput}
+          />
+          <span className="popup__error">{errors.password}</span>
+          <label htmlFor="username" className="popup__label">
+            Username
+          </label>
+          <input
+            required
+            className="popup__input"
+            id="username"
+            type="text"
+            placeholder="Enter your username"
+            name="username"
+            value={data.username}
+            onChange={validateInput}
+          />
+          <span className="popup__error">{errors.username}</span>
+          <input
+            className="popup__submit"
+            disabled={signUpState}
+            type="button"
+            value="Sign up"
+          ></input>
+        </PopupWithForm>
+        <PopupWithForm
+          handleAltBtnClick={handleAltBtnClick}
+          isOpened={isSuccessFormOpened}
+          closeAllPopups={closeAllPopups}
+          title="Registraion succesfully completed!"
+          altButton="Sign in"
         />
-        <span className="popup__error">{errors.email}</span>
-        <label htmlFor="password" className="popup__label">
-          Password
-        </label>
-        <input
-          required
-          className="popup__input"
-          id="password"
-          type="password"
-          placeholder="Enter password"
-          name="password"
-          value={data.password}
-          onChange={validateInput}
-        />
-        <span className="popup__error">{errors.password}</span>
-        <label htmlFor="username" className="popup__label">
-          Username
-        </label>
-        <input
-          required
-          className="popup__input"
-          id="username"
-          type="text"
-          placeholder="Enter your username"
-          name="username"
-          value={data.username}
-          onChange={validateInput}
-        />
-        <span className="popup__error">{errors.username}</span>
-        <input
-          className="popup__submit"
-          disabled={signUpState}
-          type="button"
-          value="Sign up"
-        ></input>
-      </PopupWithForm>
-      <PopupWithForm
-        handleAltBtnClick={handleAltBtnClick}
-        isOpened={isSuccessFormOpened}
-        closeAllPopups={closeAllPopups}
-        title="Registraion succesfully completed!"
-        altButton="Sign in"
-      />
-      <About />
+        <About />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }
 

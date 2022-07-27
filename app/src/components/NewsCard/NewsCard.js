@@ -1,11 +1,17 @@
 import image from "../../images/image_08.svg";
+import buttonImage from "../../images/saved-blue.svg";
 
 function NewsCard({ date, title, description, type, keyword }) {
+  const changeBackgroundImage = (e) => {
+    e.preventDefault();
+    e.target.style.backgroundImage = `url(${buttonImage})`;
+  };
   return (
     <div className="card">
       {keyword ? <p className="card__keyword">{keyword}</p> : ""}
       <div className="card__wrapper">
         <button
+          onClick={!keyword && changeBackgroundImage}
           className={
             keyword ? "card__button_delete card__button" : "card__button"
           }

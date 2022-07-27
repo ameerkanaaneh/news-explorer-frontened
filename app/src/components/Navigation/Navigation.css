@@ -1,4 +1,4 @@
-.navBar {
+.nav-bar {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -7,11 +7,11 @@
   border-bottom: 1px solid rgba(196, 196, 196, 0.2);
 }
 
-.navBar_border {
+.nav-bar_border {
   border-bottom: 1px solid #d1d2d6;
 }
 
-.navBar__title {
+.nav-bar__title {
   font-family: "Roboto Slab", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -19,7 +19,7 @@
   margin: 30px 0 26px 104px;
 }
 
-.navBar__menu {
+.nav-bar__menu {
   display: flex;
   flex-direction: row;
   gap: 42px;
@@ -30,7 +30,7 @@
   list-style-type: none;
 }
 
-.navBar__item {
+.nav-bar__item {
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
@@ -38,24 +38,24 @@
   font-weight: 400;
 }
 
-.navBar__link {
+.nav-bar__link {
   text-decoration: none;
   color: white;
   padding: 0 9px 26px;
   border-bottom: 3px solid white;
 }
 
-.navBar__link_color_black {
+.nav-bar__link_color_black {
   color: black;
   font-weight: 500;
   border-bottom: 3px solid black;
 }
 
-.navBar__link_border_none {
+.nav-bar__link_border_none {
   border-bottom: none;
 }
 
-.navBar__overlay {
+.nav-bar__overlay {
   position: fixed;
   left: 0;
   top: 65px;
@@ -66,7 +66,7 @@
   display: none;
 }
 
-.navBar__button {
+.nav-bar__button {
   color: white;
   background-color: transparent;
   border: 1px solid white;
@@ -76,7 +76,7 @@
   line-height: 24px;
 }
 
-.navBar__close {
+.nav-bar__close {
   background-image: url("../../images/close.svg");
   background-repeat: no-repeat;
   background-position: 50%;
@@ -92,7 +92,7 @@
   display: none;
 }
 
-.navBar__hamburger {
+.nav-bar__hamburger {
   background-image: url("../../images/hamburger.svg");
   background-repeat: no-repeat;
   background-position: 50%;
@@ -107,19 +107,19 @@
   display: none;
 }
 
-.navBar__hamburger_color_black {
+.nav-bar__hamburger_color_black {
   background-image: url("../../images/hamburger-black.svg");
 }
 
-.navBar__hamburger:hover {
+.nav-bar__hamburger:hover {
   cursor: pointer;
 }
 
-.navBar__button:hover {
+.nav-bar__button:hover {
   cursor: pointer;
 }
 
-.navBar__button_color_black {
+.nav-bar__button_color_black {
   display: flex;
   color: black;
   border: 1px solid #d1d2d6;
@@ -128,38 +128,38 @@
 }
 
 @media screen and (max-width: 768px) {
-  .navBar__title {
-    margin: 22px 0 18px 16px;
+  .nav-bar__title {
+    margin: 22px 0 18px 40px;
   }
 
-  .navBar__menu {
+  .nav-bar__menu {
     gap: 16px;
     margin: 0 40px 0 0;
   }
 
-  .navBar__item {
+  .nav-bar__item {
     font-size: 16px;
     line-height: 24px;
   }
 
-  .navBar__link {
+  .nav-bar__link {
     padding: 0 9px 20px;
     border-bottom: 3px solid white;
   }
 
-  .navBar__link_color_black {
+  .nav-bar__link_color_black {
     border-bottom: 3px solid black;
   }
-  .navBar__link_border_none {
+  .nav-bar__link_border_none {
     border-bottom: none;
   }
 
-  .navBar__button {
+  .nav-bar__button {
     padding: 7px 48px;
     border-radius: 100px;
     line-height: 24px;
   }
-  .navBar__button_color_black {
+  .nav-bar__button_color_black {
     display: flex;
     color: black;
     border: 1px solid #d1d2d6;
@@ -169,28 +169,31 @@
 }
 
 @media screen and (max-width: 550px) {
-  .navBar__icon {
-    display: none;
+  .nav-bar__title {
+    margin-left: 16px;
   }
+  /* .nav-bar__icon {
+    background-image: url("../../images/logout-white.svg");
+  } */
 
-  .navBar_view_mobile {
+  .nav-bar_view_mobile {
     background-color: #1a1b22;
     position: absolute;
     top: 0;
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
-  .navBar__close {
+  .nav-bar__close {
     display: block;
   }
-  .navBar__menu {
+  .nav-bar__menu {
     display: none;
     z-index: 2;
   }
-  .navBar__overlay {
+  .nav-bar__overlay {
     display: block;
   }
-  .navBar__menu_view_mobile {
+  .nav-bar__menu_view_mobile {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -205,30 +208,30 @@
     margin: 0;
   }
 
-  .navBar__title_color_white {
+  .nav-bar__title_color_white {
     color: white;
   }
 
-  .navBar__close:hover {
+  .nav-bar__close:hover {
     cursor: pointer;
   }
-  .navBar__link {
+  .nav-bar__link {
     border: none;
   }
-  .navBar__button {
+  .nav-bar__button {
     width: 100%;
     min-height: 56px;
   }
-  .navBar__item {
+  .nav-bar__item {
     width: 100%;
   }
-  .navBar__hamburger {
+  .nav-bar__hamburger {
     display: block;
   }
-  .navBar__link {
+  .nav-bar__link {
     color: white;
   }
-  .navBar__button {
+  .nav-bar__button {
     color: white;
     text-align: center;
     align-items: center;
