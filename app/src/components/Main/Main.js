@@ -106,7 +106,7 @@ function Main(props) {
         isOpened={props.isOpened}
         handleLogInClick={handleLogInClick}
       />
-      <main className="main_content">
+      <main className="main__content">
         <Preloader />
         <CardsSection />
         <PopupWithForm
