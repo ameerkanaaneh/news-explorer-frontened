@@ -6,6 +6,15 @@
   gap: 16px;
   list-style: none;
   max-width: 1232px;
+  grid-template-rows: auto;
+  width: 100%;
+}
+
+.news-card-list__card {
+  max-width: 400px;
+  width: 100%;
+  max-height: 576px;
+  /* height: 100%; */
 }
 
 @media screen and (max-width: 768px) {

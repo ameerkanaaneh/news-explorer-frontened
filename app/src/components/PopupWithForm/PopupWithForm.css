@@ -184,6 +184,10 @@ input:-webkit-autofill:active {
   margin-top: 3px;
   margin-bottom: 30px;
 }
+.popup__error_type_submit {
+  align-self: center;
+  margin-bottom: 8px;
+}
 
 @media screen and (max-width: 425px) {
   .popup {

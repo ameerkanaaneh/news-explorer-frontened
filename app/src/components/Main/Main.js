@@ -5,23 +5,27 @@ import About from "../About/About";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Preloader from "../Preloader/Preloader";
-function Main(props) {
-  const [isSignInFormOpened, setIsSignInformOpened] = React.useState(false);
-  const [isSignUpFormOpened, setIsSignUpformOpened] = React.useState(false);
-  const [isSuccessFormOpened, setIsSuccessformOpened] = React.useState(false);
-  const [signInState, setSignInState] = React.useState(true);
-  const [signUpState, setSignUpState] = React.useState(true);
-  const [data, setData] = React.useState({
-    email: "",
-    password: "",
-    username: "",
-  });
-  const [errors, setErrors] = React.useState({
-    email: "",
-    password: "",
-    username: "",
-  });
-
+function Main({
+  isSuccessFormOpened,
+  setIsSuccessformOpened,
+  setIsSignInformOpened,
+  setIsSignUpformOpened,
+  isSignInFormOpened,
+  isSignUpFormOpened,
+  handleSignIn,
+  handleSaveClick,
+  errors,
+  setErrors,
+  signInState,
+  signUpState,
+  setSignInState,
+  setSignUpState,
+  data,
+  setData,
+  handleLogoutClick,
+  signUpError,
+  ...props
+}) {
   const validEmailRegex = RegExp(
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i
   );
@@ -101,14 +105,27 @@ function Main(props) {
   return (
     <div className="main">
       <Header
+        handleLogoutClick={handleLogoutClick}
+        handleSearchClick={props.handleSearchClick}
+        handleSearchChange={props.handleSearchChange}
         handleOpenClick={props.handleOpenClick}
         handleCloseClick={props.handleCloseClick}
         isOpened={props.isOpened}
+        isLoggedIn={props.isLoggedIn}
         handleLogInClick={handleLogInClick}
+        searchWorld={props.searchWorld}
       />
       <main className="main__content">
-        <Preloader />
-        <CardsSection />
+        {props.preloaderOpened && <Preloader />}
+        {props.articles.length !== 0 && (
+          <CardsSection
+            handleSaveClick={handleSaveClick}
+            isLoggedIn={props.isLoggedIn}
+            articles={props.articles}
+            handleShowMoreClick={props.handleShowMoreClick}
+            maxArticlesRows={props.maxArticlesRows}
+          />
+        )}
         <PopupWithForm
           handleAltBtnClick={handleAltBtnClick}
           isOpened={isSignInFormOpened}
@@ -149,6 +166,7 @@ function Main(props) {
           <input
             className="popup__submit"
             disabled={signInState}
+            onClick={handleSignIn}
             type="button"
             value="Sign in"
           ></input>
@@ -202,9 +220,13 @@ function Main(props) {
             onChange={validateInput}
           />
           <span className="popup__error">{errors.username}</span>
+          <span className="popup__error popup__error_type_submit">
+            {signUpError}
+          </span>
           <input
             className="popup__submit"
             disabled={signUpState}
+            onClick={props.handleSignUp}
             type="button"
             value="Sign up"
           ></input>
