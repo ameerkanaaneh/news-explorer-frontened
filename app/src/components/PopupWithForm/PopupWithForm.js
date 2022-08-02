@@ -9,7 +9,7 @@ function PopupWithForm(props) {
         ></button>
         <h2 className="popup__title">{props.title}</h2>
         {props.children ? (
-          <form className="popup__form" action="submit" noValidate>
+          <form className="popup__form" action="submit">
             <fieldset className="popup__fields">{props.children}</fieldset>
             <p className="popup__alt">
               {props.children ? "or" : ""}

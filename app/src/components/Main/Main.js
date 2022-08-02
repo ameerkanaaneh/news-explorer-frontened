@@ -24,6 +24,8 @@ function Main({
   setData,
   handleLogoutClick,
   signUpError,
+  handleDelete,
+  token,
   ...props
 }) {
   const validEmailRegex = RegExp(
@@ -74,15 +76,15 @@ function Main({
       case "email":
         errorsData.email = validEmailRegex.test(value)
           ? ""
-          : "Invalid email address";
+          : e.target.validationMessage;
         break;
       case "username":
         errorsData.username =
-          value.length < 2 ? "username must be at least 2 characters long" : "";
+          value.length < 2 ? e.target.validationMessage : "";
         break;
       case "password":
         errorsData.password =
-          value.length < 8 ? "Password must be at least 8 characters long" : "";
+          value.length < 8 ? e.target.validationMessage : "";
 
         break;
       default:
@@ -90,17 +92,8 @@ function Main({
     }
     setErrors(errorsData);
     setData({ ...data, [name]: value });
-    let signInBtnState =
-      errors.email.length > 0 ||
-      !data.password.length > 0 ||
-      errors.password.length > 0 ||
-      !data.email.length > 0
-        ? true
-        : false;
-    let signUpBtnState =
-      signInBtnState || errors.username.length > 0 || data.username > 0;
-    setSignInState(signInBtnState);
-    setSignUpState(signUpBtnState);
+    setSignInState(!e.target.closest("form").checkValidity());
+    setSignUpState(!e.target.closest("form").checkValidity());
   };
   return (
     <div className="main">
@@ -119,6 +112,8 @@ function Main({
         {props.preloaderOpened && <Preloader />}
         {props.articles.length !== 0 && (
           <CardsSection
+            token={token}
+            handleDelete={handleDelete}
             handleSaveClick={handleSaveClick}
             isLoggedIn={props.isLoggedIn}
             articles={props.articles}
@@ -157,6 +152,7 @@ function Main({
             type="password"
             placeholder="Enter password"
             name="password"
+            minlength="8"
             value={data.password}
             onChange={validateInput}
           />
@@ -202,6 +198,7 @@ function Main({
             type="password"
             placeholder="Enter password"
             name="password"
+            minlength="8"
             value={data.password}
             onChange={validateInput}
           />
@@ -216,6 +213,7 @@ function Main({
             type="text"
             placeholder="Enter your username"
             name="username"
+            minlength="2"
             value={data.username}
             onChange={validateInput}
           />

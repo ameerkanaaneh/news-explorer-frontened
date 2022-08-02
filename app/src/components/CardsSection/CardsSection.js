@@ -7,6 +7,8 @@ function CardsSection({
   maxArticlesRows,
   handleShowMoreClick,
   handleSaveClick,
+  handleDelete,
+  token,
 }) {
   return (
     <div className="cards-section">
@@ -18,10 +20,19 @@ function CardsSection({
               return (
                 <li className="news-card-list__card" key={i}>
                   <NewsCard
+                    token={token}
+                    handleDelete={handleDelete}
                     article={article}
                     handleSaveClick={handleSaveClick}
                     isLoggedIn={isLoggedIn}
-                    date={article.publishedAt}
+                    date={new Date(article.publishedAt).toLocaleDateString(
+                      undefined,
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }
+                    )}
                     title={article.title}
                     description={article.description}
                     type={article.source.name}

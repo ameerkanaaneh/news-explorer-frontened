@@ -1,4 +1,6 @@
 import buttonImage from "../../images/saved-blue.svg";
+import buttonImageUnsaved from "../../images/Rectangle8.svg";
+import React from "react";
 
 function NewsCard({
   date,
@@ -13,22 +15,38 @@ function NewsCard({
   handleDelete,
   token,
 }) {
+  const [saved, setSaved] = React.useState(false);
+  const [id, setId] = React.useState("");
   const handleDeleteClick = (e) => {
     e.preventDefault();
-    console.log(article._id);
-    handleDelete(token, article._id);
+    console.log(id);
+    console.log(saved);
+    const selectedId = article._id ? article._id : id;
+    handleDelete(token, selectedId)
+      .then((data) => {
+        !keyword && setArticleStateToUnSaved(e);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const setArticleStateToUnSaved = (e) => {
+    setSaved(false);
+    e.target.style.backgroundImage = `url(${buttonImageUnsaved})`;
   };
 
   const setArticleStateToSaved = (e) => {
+    setSaved(true);
     e.target.style.backgroundImage = `url(${buttonImage})`;
   };
 
   const handleSave = (e) => {
     e.preventDefault();
-    handleSaveClick(article).then((data) => {
-      console.log(data);
-      setArticleStateToSaved(e);
-    });
+    handleSaveClick(article)
+      .then((data) => {
+        setId(data.data._id);
+        setArticleStateToSaved(e);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="card">
@@ -36,7 +54,13 @@ function NewsCard({
       <div className="card__wrapper">
         <button
           onClick={
-            isLoggedIn && (handleDelete ? handleDeleteClick : handleSave)
+            isLoggedIn
+              ? saved
+                ? handleDeleteClick
+                : keyword
+                ? handleDeleteClick
+                : handleSave
+              : undefined
           }
           className={
             keyword ? "card__button_delete card__button" : "card__button"

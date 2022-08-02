@@ -17,15 +17,17 @@ function SavedNewsHeader({
   const [keywords, setKeywords] = React.useState([]);
 
   React.useEffect(() => {
-    const currentKeywords = [];
+    const currentKeywords = {};
     for (let i = 0; i < savedNews.length; i++) {
       const currentKeyword = savedNews[i].keyword;
-      if (!currentKeywords.includes(currentKeyword)) {
-        currentKeywords.push(currentKeyword);
+      if (currentKeyword in currentKeywords) {
+        currentKeywords[currentKeyword] += 1;
+      } else {
+        currentKeywords[currentKeyword] = 1;
       }
     }
 
-    setKeywords(currentKeywords);
+    setKeywords(Object.entries(currentKeywords).sort((a, b) => b[1] - a[1]));
   }, [token, savedNews]);
   return (
     <header className="saved-news-header">
@@ -83,13 +85,13 @@ function SavedNewsHeader({
           <p className="saved-news-header__keywords-container">
             By keywords:
             <span className="saved-news-header__keywords">
-              {keywords.length > 2
-                ? `${keywords[0]}, ${keywords[1]}, and ${
+              {keywords.length > 3
+                ? `${keywords[0][0]}, ${keywords[1][0]}, and ${
                     keywords.length - 2
                   } others`
-                : `${keywords[0] !== undefined && keywords[0]}, ${
-                    keywords[1] !== undefined ? keywords[1] : ""
-                  }`}
+                : `${keywords[0] !== undefined && keywords[0][0]}, ${
+                    keywords[1] !== undefined ? keywords[1][0] : ""
+                  }, ${keywords[2] !== undefined ? keywords[2][0] : ""} `}
             </span>
           </p>
         )}

@@ -75,8 +75,10 @@ class api {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => {
-        if (res) {
+        if (res.ok) {
           return res.json();
+        } else {
+          return Promise.reject(`${res.status} - ${res.message}`);
         }
       })
       .then((data) => {

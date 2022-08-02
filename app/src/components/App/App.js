@@ -88,14 +88,7 @@ function App() {
   };
 
   const handleDelete = (token, id) => {
-    mainApi
-      .deleteArticle(token, id)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return mainApi.deleteArticle(token, id);
   };
 
   const handleLogoutClick = (e) => {
@@ -127,12 +120,17 @@ function App() {
   };
 
   const handleSaveClick = (article) => {
-    console.log(searchWorld);
+    const date = new Date(article.publishedAt).toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
     return mainApi.saveCard(
       searchWorld,
       article.title,
       article.description,
-      article.publishedAt,
+      date,
       article.source.name,
       article.url,
       article.urlToImage,
@@ -142,14 +140,17 @@ function App() {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    mainApi.authorize(data.email, data.password).then((data) => {
-      if (data.token) {
-        setToken(data.token);
-        setIsLoggedIn(true);
-        closeAllPopups(e);
-        navigate("/saved-news");
-      }
-    });
+    mainApi
+      .authorize(data.email, data.password)
+      .then((data) => {
+        if (data) {
+          setToken(data.token);
+          setIsLoggedIn(true);
+          closeAllPopups(e);
+          navigate("/saved-news");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleSearchChange = (e) => {
@@ -177,6 +178,7 @@ function App() {
     api
       .getArticles(searchWorld)
       .then((data) => {
+        setMaxArticlesRows(1);
         setArticles(data.articles);
 
         console.log(data);
@@ -204,6 +206,7 @@ function App() {
           path="/"
           element={
             <Main
+              handleDelete={handleDelete}
               handleSaveClick={handleSaveClick}
               handleLogoutClick={handleLogoutClick}
               handleSignIn={handleSignIn}
@@ -237,6 +240,7 @@ function App() {
               handleOpenClick={openNavBar}
               handleCloseClick={closeNavBar}
               isOpened={isMobileNavbarOpen}
+              token={token}
             />
           }
         />
