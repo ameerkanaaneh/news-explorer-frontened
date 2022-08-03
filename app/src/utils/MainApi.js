@@ -3,6 +3,14 @@ class api {
     this.url = url;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`${res.status} - ${res.message}`);
+    }
+  }
+
   getSavedArticles(token) {
     return fetch(`${this.url}/articles`, {
       method: "GET",
@@ -12,9 +20,7 @@ class api {
         authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
+      return this._checkResponse(res);
     });
   }
 
@@ -27,9 +33,7 @@ class api {
         authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
+      return this._checkResponse(res);
     });
   }
 
@@ -43,9 +47,7 @@ class api {
       },
       body: JSON.stringify({ keyword, title, text, date, source, link, image }),
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
+      return this._checkResponse(res);
     });
   }
 
@@ -58,11 +60,7 @@ class api {
       },
       body: JSON.stringify({ email, password, name: username }),
     }).then((res) => {
-      if (res) {
-        return res.json();
-      } else {
-        Promise.reject(`${res.status} - ${res.message}`);
-      }
+      return this._checkResponse(res);
     });
   }
   authorize(email, password) {
@@ -75,11 +73,7 @@ class api {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject(`${res.status} - ${res.message}`);
-        }
+        return this._checkResponse(res);
       })
       .then((data) => {
         if (!data.message) {
@@ -100,9 +94,7 @@ class api {
       },
     })
       .then((res) => {
-        return res.ok
-          ? res.json()
-          : Promise.reject(`${res.status} - ${res.message}`);
+        return this._checkResponse(res);
       })
       .then((data) => {
         return data;

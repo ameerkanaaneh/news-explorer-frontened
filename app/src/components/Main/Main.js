@@ -5,6 +5,7 @@ import About from "../About/About";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Preloader from "../Preloader/Preloader";
+
 function Main({
   isSuccessFormOpened,
   setIsSuccessformOpened,
@@ -20,6 +21,8 @@ function Main({
   signUpState,
   setSignInState,
   setSignUpState,
+  savedNews,
+  setSavedNews,
   data,
   setData,
   handleLogoutClick,
@@ -115,6 +118,8 @@ function Main({
             token={token}
             handleDelete={handleDelete}
             handleSaveClick={handleSaveClick}
+            savedNews={savedNews}
+            setSavedNews={setSavedNews}
             isLoggedIn={props.isLoggedIn}
             articles={props.articles}
             handleShowMoreClick={props.handleShowMoreClick}
@@ -127,6 +132,7 @@ function Main({
           closeAllPopups={closeAllPopups}
           title="Sign in"
           altButton="Sign up"
+          handleSubmit={handleSignIn}
         >
           <label htmlFor="email" className="popup__label">
             Email
@@ -152,7 +158,7 @@ function Main({
             type="password"
             placeholder="Enter password"
             name="password"
-            minlength="8"
+            minLength="8"
             value={data.password}
             onChange={validateInput}
           />
@@ -162,8 +168,8 @@ function Main({
           <input
             className="popup__submit"
             disabled={signInState}
-            onClick={handleSignIn}
-            type="button"
+            // onClick={handleSignIn}
+            type="submit"
             value="Sign in"
           ></input>
         </PopupWithForm>
@@ -173,14 +179,15 @@ function Main({
           closeAllPopups={closeAllPopups}
           title="Sign Up"
           altButton="Sign in"
+          handleSubmit={props.handleSignUp}
         >
-          <label htmlFor="email" className="popup__label">
+          <label htmlFor="SignInEmail" className="popup__label">
             Email
           </label>
           <input
             required
             className="popup__input"
-            id="email"
+            id="SignInEmail"
             type="email"
             placeholder="Enter email"
             name="email"
@@ -188,17 +195,17 @@ function Main({
             onChange={validateInput}
           />
           <span className="popup__error">{errors.email}</span>
-          <label htmlFor="password" className="popup__label">
+          <label htmlFor="SignInPassword" className="popup__label">
             Password
           </label>
           <input
             required
             className="popup__input"
-            id="password"
+            id="SignInPassword"
             type="password"
             placeholder="Enter password"
             name="password"
-            minlength="8"
+            minLength="8"
             value={data.password}
             onChange={validateInput}
           />
@@ -213,7 +220,7 @@ function Main({
             type="text"
             placeholder="Enter your username"
             name="username"
-            minlength="2"
+            minLength="2"
             value={data.username}
             onChange={validateInput}
           />
@@ -224,8 +231,8 @@ function Main({
           <input
             className="popup__submit"
             disabled={signUpState}
-            onClick={props.handleSignUp}
-            type="button"
+            // onClick={props.handleSignUp}
+            type="submit"
             value="Sign up"
           ></input>
         </PopupWithForm>

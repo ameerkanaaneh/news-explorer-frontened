@@ -14,16 +14,18 @@ function NewsCard({
   article,
   handleDelete,
   token,
+  savedNews,
+  setSavedNews,
 }) {
   const [saved, setSaved] = React.useState(false);
   const [id, setId] = React.useState("");
   const handleDeleteClick = (e) => {
     e.preventDefault();
-    console.log(id);
-    console.log(saved);
     const selectedId = article._id ? article._id : id;
     handleDelete(token, selectedId)
       .then((data) => {
+        const savedNewsFiltered = savedNews.filter((a) => a._id !== selectedId);
+        setSavedNews(savedNewsFiltered);
         !keyword && setArticleStateToUnSaved(e);
       })
       .catch((err) => console.log(err));
@@ -44,6 +46,8 @@ function NewsCard({
     handleSaveClick(article)
       .then((data) => {
         setId(data.data._id);
+        const currentSavedNews = savedNews;
+        setSavedNews([data.data, ...currentSavedNews]);
         setArticleStateToSaved(e);
       })
       .catch((err) => console.log(err));

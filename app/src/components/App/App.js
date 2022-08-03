@@ -42,13 +42,11 @@ function App() {
       mainApi
         .getSavedArticles(token)
         .then((articles) => {
-          if (articles) {
-            setSavedNews(articles.data);
-          }
+          setSavedNews(articles.data);
         })
         .catch((err) => console.log(err));
     }
-  }, [token, savedNews]);
+  }, [token]);
 
   React.useEffect(() => {
     if (token) {
@@ -116,7 +114,8 @@ function App() {
           setIsRegistered(true);
           setIsSuccessformOpened(true);
         }
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleSaveClick = (article) => {
@@ -180,14 +179,10 @@ function App() {
       .then((data) => {
         setMaxArticlesRows(1);
         setArticles(data.articles);
-
-        console.log(data);
       })
       .catch((err) => console.log(err))
       .finally(() => {
         hidePreloader();
-
-        // setSearchWorld("");
       });
   };
 
@@ -208,6 +203,8 @@ function App() {
             <Main
               handleDelete={handleDelete}
               handleSaveClick={handleSaveClick}
+              savedNews={savedNews}
+              setSavedNews={setSavedNews}
               handleLogoutClick={handleLogoutClick}
               handleSignIn={handleSignIn}
               signUpError={signUpError}
@@ -255,6 +252,7 @@ function App() {
               <SavedNews
                 handleDelete={handleDelete}
                 savedNews={savedNews}
+                setSavedNews={setSavedNews}
                 handleLogoutClick={handleLogoutClick}
                 isLoggedIn={isLoggedIn}
                 handelOpenClick={openNavBar}

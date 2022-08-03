@@ -9,6 +9,8 @@ function CardsSection({
   handleSaveClick,
   handleDelete,
   token,
+  savedNews,
+  setSavedNews,
 }) {
   return (
     <div className="cards-section">
@@ -24,6 +26,8 @@ function CardsSection({
                     handleDelete={handleDelete}
                     article={article}
                     handleSaveClick={handleSaveClick}
+                    savedNews={savedNews}
+                    setSavedNews={setSavedNews}
                     isLoggedIn={isLoggedIn}
                     date={new Date(article.publishedAt).toLocaleDateString(
                       undefined,
