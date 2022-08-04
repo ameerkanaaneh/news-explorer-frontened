@@ -2,7 +2,7 @@
 
 # Getting Started with Create React App
 
-[https://www.ameer-news.students.nomoredomainssbs.ru/](link to the live project)
+[link to the live project](https://www.ameer-news.students.nomoredomainssbs.ru/)
 
 In the project directory, you can run:
 
