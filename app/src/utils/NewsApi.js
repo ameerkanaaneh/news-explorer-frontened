@@ -9,7 +9,8 @@ class newsApi {
 
   getArticles(q) {
     return fetch(
-      `${this.api}?q=${q}&from=${this.from}&pageSize=${this.pageSize}&to=${this.to}&apiKey=${this.key}`
+      `${this.api}?q=${q}&from=${this.from}&pageSize=${this.pageSize}&to=${this.to}&apiKey=${this.key}`,
+      {}
     )
       .then((res) => {
         if (res.ok) {
@@ -41,7 +42,7 @@ class newsApi {
 }
 
 const api = new newsApi(
-  "https://newsapi.org/v2/everything",
+  "https://nomoreparties.co/news/v2/everything",
   "303f113ec1d0439d853633e27d22a610"
 );
 export default api;

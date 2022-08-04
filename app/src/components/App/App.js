@@ -177,6 +177,7 @@ function App() {
     api
       .getArticles(searchWorld)
       .then((data) => {
+        console.log(data);
         setMaxArticlesRows(1);
         setArticles(data.articles);
       })
