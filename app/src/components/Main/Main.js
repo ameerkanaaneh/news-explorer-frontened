@@ -5,23 +5,32 @@ import About from "../About/About";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Preloader from "../Preloader/Preloader";
-function Main(props) {
-  const [isSignInFormOpened, setIsSignInformOpened] = React.useState(false);
-  const [isSignUpFormOpened, setIsSignUpformOpened] = React.useState(false);
-  const [isSuccessFormOpened, setIsSuccessformOpened] = React.useState(false);
-  const [signInState, setSignInState] = React.useState(true);
-  const [signUpState, setSignUpState] = React.useState(true);
-  const [data, setData] = React.useState({
-    email: "",
-    password: "",
-    username: "",
-  });
-  const [errors, setErrors] = React.useState({
-    email: "",
-    password: "",
-    username: "",
-  });
 
+function Main({
+  isSuccessFormOpened,
+  setIsSuccessformOpened,
+  setIsSignInformOpened,
+  setIsSignUpformOpened,
+  isSignInFormOpened,
+  isSignUpFormOpened,
+  handleSignIn,
+  handleSaveClick,
+  errors,
+  setErrors,
+  signInState,
+  signUpState,
+  setSignInState,
+  setSignUpState,
+  savedNews,
+  setSavedNews,
+  data,
+  setData,
+  handleLogoutClick,
+  signUpError,
+  handleDelete,
+  token,
+  ...props
+}) {
   const validEmailRegex = RegExp(
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i
   );
@@ -70,15 +79,15 @@ function Main(props) {
       case "email":
         errorsData.email = validEmailRegex.test(value)
           ? ""
-          : "Invalid email address";
+          : e.target.validationMessage;
         break;
       case "username":
         errorsData.username =
-          value.length < 2 ? "username must be at least 2 characters long" : "";
+          value.length < 2 ? e.target.validationMessage : "";
         break;
       case "password":
         errorsData.password =
-          value.length < 8 ? "Password must be at least 8 characters long" : "";
+          value.length < 8 ? e.target.validationMessage : "";
 
         break;
       default:
@@ -86,35 +95,44 @@ function Main(props) {
     }
     setErrors(errorsData);
     setData({ ...data, [name]: value });
-    let signInBtnState =
-      errors.email.length > 0 ||
-      !data.password.length > 0 ||
-      errors.password.length > 0 ||
-      !data.email.length > 0
-        ? true
-        : false;
-    let signUpBtnState =
-      signInBtnState || errors.username.length > 0 || data.username > 0;
-    setSignInState(signInBtnState);
-    setSignUpState(signUpBtnState);
+    setSignInState(!e.target.closest("form").checkValidity());
+    setSignUpState(!e.target.closest("form").checkValidity());
   };
   return (
     <div className="main">
       <Header
+        handleLogoutClick={handleLogoutClick}
+        handleSearchClick={props.handleSearchClick}
+        handleSearchChange={props.handleSearchChange}
         handleOpenClick={props.handleOpenClick}
         handleCloseClick={props.handleCloseClick}
         isOpened={props.isOpened}
+        isLoggedIn={props.isLoggedIn}
         handleLogInClick={handleLogInClick}
+        searchWorld={props.searchWorld}
       />
-      <main className="main_content">
-        <Preloader />
-        <CardsSection />
+      <main className="main__content">
+        {props.preloaderOpened && <Preloader />}
+        {props.articles.length !== 0 && (
+          <CardsSection
+            token={token}
+            handleDelete={handleDelete}
+            handleSaveClick={handleSaveClick}
+            savedNews={savedNews}
+            setSavedNews={setSavedNews}
+            isLoggedIn={props.isLoggedIn}
+            articles={props.articles}
+            handleShowMoreClick={props.handleShowMoreClick}
+            maxArticlesRows={props.maxArticlesRows}
+          />
+        )}
         <PopupWithForm
           handleAltBtnClick={handleAltBtnClick}
           isOpened={isSignInFormOpened}
           closeAllPopups={closeAllPopups}
           title="Sign in"
           altButton="Sign up"
+          handleSubmit={handleSignIn}
         >
           <label htmlFor="email" className="popup__label">
             Email
@@ -140,6 +158,7 @@ function Main(props) {
             type="password"
             placeholder="Enter password"
             name="password"
+            minLength="8"
             value={data.password}
             onChange={validateInput}
           />
@@ -149,7 +168,8 @@ function Main(props) {
           <input
             className="popup__submit"
             disabled={signInState}
-            type="button"
+            // onClick={handleSignIn}
+            type="submit"
             value="Sign in"
           ></input>
         </PopupWithForm>
@@ -159,14 +179,15 @@ function Main(props) {
           closeAllPopups={closeAllPopups}
           title="Sign Up"
           altButton="Sign in"
+          handleSubmit={props.handleSignUp}
         >
-          <label htmlFor="email" className="popup__label">
+          <label htmlFor="SignInEmail" className="popup__label">
             Email
           </label>
           <input
             required
             className="popup__input"
-            id="email"
+            id="SignInEmail"
             type="email"
             placeholder="Enter email"
             name="email"
@@ -174,16 +195,17 @@ function Main(props) {
             onChange={validateInput}
           />
           <span className="popup__error">{errors.email}</span>
-          <label htmlFor="password" className="popup__label">
+          <label htmlFor="SignInPassword" className="popup__label">
             Password
           </label>
           <input
             required
             className="popup__input"
-            id="password"
+            id="SignInPassword"
             type="password"
             placeholder="Enter password"
             name="password"
+            minLength="8"
             value={data.password}
             onChange={validateInput}
           />
@@ -198,14 +220,19 @@ function Main(props) {
             type="text"
             placeholder="Enter your username"
             name="username"
+            minLength="2"
             value={data.username}
             onChange={validateInput}
           />
           <span className="popup__error">{errors.username}</span>
+          <span className="popup__error popup__error_type_submit">
+            {signUpError}
+          </span>
           <input
             className="popup__submit"
             disabled={signUpState}
-            type="button"
+            // onClick={props.handleSignUp}
+            type="submit"
             value="Sign up"
           ></input>
         </PopupWithForm>

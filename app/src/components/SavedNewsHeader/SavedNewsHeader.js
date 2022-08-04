@@ -2,8 +2,33 @@ import Navigation from "../Navigation/Navigation";
 import { NavLink } from "react-router-dom";
 import logoutImg from "../../images/logout.svg";
 import logoutImgWhite from "../../images/logout-white.svg";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import React from "react";
 
-function SavedNewsHeader({ handelOpenClick, handleCloseClick, isOpened }) {
+function SavedNewsHeader({
+  handelOpenClick,
+  handleCloseClick,
+  isOpened,
+  handleLogoutClick,
+  savedNews,
+  token,
+}) {
+  const currentUser = React.useContext(CurrentUserContext);
+  const [keywords, setKeywords] = React.useState([]);
+
+  React.useEffect(() => {
+    const currentKeywords = {};
+    for (let i = 0; i < savedNews.length; i++) {
+      const currentKeyword = savedNews[i].keyword;
+      if (currentKeyword in currentKeywords) {
+        currentKeywords[currentKeyword] += 1;
+      } else {
+        currentKeywords[currentKeyword] = 1;
+      }
+    }
+
+    setKeywords(Object.entries(currentKeywords).sort((a, b) => b[1] - a[1]));
+  }, [token, savedNews]);
   return (
     <header className="saved-news-header">
       <Navigation
@@ -39,8 +64,9 @@ function SavedNewsHeader({ handelOpenClick, handleCloseClick, isOpened }) {
             <button
               className="nav-bar__button nav-bar__button_color_black"
               type="button"
+              onClick={handleLogoutClick}
             >
-              <span>Elise</span>
+              <span>{currentUser.name}</span>
               <img
                 src={isOpened ? logoutImgWhite : logoutImg}
                 className="nav-bar__icon"
@@ -53,14 +79,22 @@ function SavedNewsHeader({ handelOpenClick, handleCloseClick, isOpened }) {
       <div className="saved-news-header__content">
         <p className="saved-news-header__word">Saved articles</p>
         <h1 className="saved-news-header__description">
-          Elise, you have 5 saved articles
+          {currentUser.name}, you have {savedNews.length} saved articles
         </h1>
-        <p className="saved-news-header__keywords-container">
-          By keywords:{" "}
-          <span className="saved-news-header__keywords">
-            Nature, Yellowstone, and 2 other
-          </span>
-        </p>
+        {keywords.length > 0 && (
+          <p className="saved-news-header__keywords-container">
+            By keywords:
+            <span className="saved-news-header__keywords">
+              {keywords.length > 3
+                ? `${keywords[0][0]}, ${keywords[1][0]}, and ${
+                    keywords.length - 2
+                  } others`
+                : `${keywords[0] !== undefined && keywords[0][0]}, ${
+                    keywords[1] !== undefined ? keywords[1][0] : ""
+                  }, ${keywords[2] !== undefined ? keywords[2][0] : ""} `}
+            </span>
+          </p>
+        )}
       </div>
     </header>
   );
